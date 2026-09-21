@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Machine — Launch Successful</title>
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/success.css">
+</head>
+<body>
+  <div class="screen success-screen">
+    <div class="glow-orb" style="width:300px;height:300px;background:#00F5FF;top:100px;left:50%;transform:translateX(-50%);"></div>
+
+    <div class="success-icon">
+      <svg width="88" height="88" viewBox="0 0 88 88" fill="none">
+        <circle cx="44" cy="44" r="40" stroke="#00F5FF" stroke-width="2"/>
+        <circle cx="44" cy="44" r="32" stroke="#00F5FF" stroke-width="1" stroke-dasharray="3 3" opacity="0.4">
+          <animateTransform attributeName="transform" type="rotate" from="0 44 44" to="360 44 44" dur="8s" repeatCount="indefinite"/>
+        </circle>
+        <path d="M30 44l10 10 18-20" stroke="#00F5FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1 class="success-title">Launch<br>Successful!</h1>
+    <p class="success-message">Bon voyage, <span id="traveler-name">Traveler</span>!</p>
+
+    <div class="success-ticket card">
+      <div class="ticket-header">BOARDING PASS</div>
+      <div class="ticket-row">
+        <div class="ticket-col">
+          <div class="ticket-label">From</div>
+          <div class="ticket-value">Present</div>
+        </div>
+        <div class="ticket-arrow">→</div>
+        <div class="ticket-col">
+          <div class="ticket-label">To</div>
+          <div class="ticket-value" id="t-destination">—</div>
+        </div>
+      </div>
+      <div class="ticket-divider"></div>
+      <div class="ticket-row">
+        <div class="ticket-col">
+          <div class="ticket-label">Date</div>
+          <div class="ticket-value" id="t-date">—</div>
+        </div>
+        <div class="ticket-col">
+          <div class="ticket-label">Duration</div>
+          <div class="ticket-value" id="t-duration">—</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="window.location.href='welcome.html'">Plan Another Trip</button>
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    const name = sessionStorage.getItem('tm_name');
+    if (name) document.getElementById('traveler-name').textContent = name.split(' ')[0];
+    document.getElementById('t-destination').textContent = sessionStorage.getItem('tm_location') || '—';
+    document.getElementById('t-date').textContent = sessionStorage.getItem('tm_date') || '—';
+    const d = parseInt(sessionStorage.getItem('tm_days')) || 0;
+    const h = parseInt(sessionStorage.getItem('tm_hours')) || 0;
+    const parts = [];
+    if (d > 0) parts.push(d + 'd');
+    if (h > 0) parts.push(h + 'h');
+    document.getElementById('t-duration').textContent = parts.join(' ') || '—';
+  </script>
+</body>
+</html>

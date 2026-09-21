@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Machine — Summary</title>
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/summary.css">
+</head>
+<body>
+
+  <div class="screen">
+
+    <h1 class="page-title">Review Journey</h1>
+
+    <div class="summary-container">
+
+      <div class="card">
+        <div class="summary-section-title">Traveler</div>
+        <div class="summary-row"><span>Name</span><span id="s-name">—</span></div>
+        <div class="summary-row"><span>Email</span><span id="s-email">—</span></div>
+        <div class="summary-row"><span>Age</span><span id="s-age">—</span></div>
+      </div>
+
+      <div class="card">
+        <div class="summary-section-title">Destination</div>
+        <div class="summary-row"><span>Location</span><span id="s-location">—</span></div>
+        <div class="summary-row"><span>Travel Date</span><span id="s-date">—</span></div>
+        <div class="summary-row"><span>Stay Duration</span><span id="s-duration">—</span></div>
+      </div>
+
+      <div class="card">
+        <div class="summary-section-title">Return</div>
+        <div class="summary-row"><span>Return To</span><span id="s-return">—</span></div>
+        <div class="summary-row last"><span>Note</span><span id="s-note">—</span></div>
+      </div>
+
+    </div>
+
+    <div class="summary-actions">
+      <div class="launch-warning">
+        ⚠ Time travel is irreversible. Check before launching.
+      </div>
+
+<button class="btn-primary launch-btn" onclick="launch()">
+   Confirm Time Travel
+</button>
+      <button class="btn-secondary" onclick="window.location.href='return.html'">← Edit</button>
+    </div>
+
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    const get = k => sessionStorage.getItem(k) || '—';
+    document.getElementById('s-name').textContent     = get('tm_name');
+    document.getElementById('s-email').textContent    = get('tm_email');
+    document.getElementById('s-age').textContent      = get('tm_age') + (get('tm_age') !== '—' ? ' years' : '');
+    document.getElementById('s-location').textContent = get('tm_location');
+    document.getElementById('s-date').textContent     = get('tm_date');
+    document.getElementById('s-return').textContent   = get('tm_return');
+    document.getElementById('s-note').textContent     = get('tm_note') || 'None';
+    const d = get('tm_days'), h = get('tm_hours');
+    const parts = [];
+    if (d !== '—' && parseInt(d) > 0) parts.push(d + ' days');
+    if (h !== '—' && parseInt(h) > 0) parts.push(h + ' hours');
+    document.getElementById('s-duration').textContent = parts.join(' and ') || '—';
+
+    function launch() {
+      window.location.href = 'success.html';
+    }
+  </script>
+</body>
+</html>

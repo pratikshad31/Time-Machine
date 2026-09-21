@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-primary: #0A0E1A;
+  --bg-card: #111827;
+  --bg-input: #1E2A3A;
+  --cyan: #00F5FF;
+  --purple: #8B5CF6;
+  --pink: #EC4899;
+  --white: #FFFFFF;
+  --subtext: #94A3B8;
+  --border: #1E3A5F;
+  --error: #EF4444;
+  --success: #10B981;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --font-heading: 'Orbitron', monospace;
+  --font-body: 'Inter', sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+   margin: 0 auto;
+  background: var(--bg-primary);
+}
+
+.screen {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 90vh;
+  height:auto;
+  margin: auto;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(10, 14, 26, 0.85);
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+}
+
+
+
+/* Top logo/title bar */
+.top-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.step-indicator {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--subtext);
+  letter-spacing: 1px;
+}
+
+/* Page heading */
+.page-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--subtext);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+
+
+/* Form elements */
+.form-group {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--subtext);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  width: 100%;
+  height: 56px;
+  background: var(--bg-input);
+  background-color: var(--bg-input);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  padding: 0 20px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(0, 245, 255, 0.12);
+}
+
+.form-input::placeholder {
+  color: #475569;
+}
+
+select.form-input {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px;
+  color: #475569;
+  
+}
+
+select.form-input option {
+  background: var(--bg-card);
+  color: #475569;
+}
+
+/* Number input row */
+.input-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.input-row .form-group {
+  flex: 1;
+}
+
+/* Primary button */
+.btn-primary {
+  width: 50%;
+  height: 60px;
+  
+  background: var(--cyan);
+  color: #0A0E1A;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 245, 255, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary/ghost button */
+.btn-secondary {
+  width: 50%;
+  height: 60px;
+  background: transparent;
+  color: var(--subtext);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  margin-top: 12px;
+}
+
+.btn-secondary:hover {
+  border-color: var(--subtext);
+  color: var(--white);
+}
+
+/* Card box */
+.card {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* Glow orb decoration */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Validation error text */
+.field-error {
+  font-size: 12px;
+  color: var(--error);
+  margin-top: 6px;
+  display: none;
+}
+
+.field-error.show {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .form-group {
+    width: 48%;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+/* Fix browser autofill white background (especially email) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-input) inset !important;
+  -webkit-text-fill-color: var(--white) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

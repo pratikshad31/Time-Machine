@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Machine — Duration</title>
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/duration.css">
+</head>
+<body>
+  <div class="screen">
+    <div class="glow-orb" style="width:180px;height:180px;background:#EC4899;top:-30px;right:-30px;"></div>
+
+  
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 60%"></div>
+    </div>
+
+    <h1 class="page-title">How Long<br>Will You Stay?</h1>
+  
+
+    <div class="duration-card card">
+      <div class="duration-row">
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="days">Days</label>
+          <input class="form-input duration-input" type="number" id="days" placeholder="0" min="0" max="365" oninput="updateSummary()">
+        </div>
+        <div class="duration-divider">:</div>
+        <div class="form-group" style="margin-bottom:0">
+          <label class="form-label" for="hours">Hours</label>
+          <input class="form-input duration-input" type="number" id="hours" placeholder="0" min="0" max="23" oninput="updateSummary()">
+        </div>
+      </div>
+      <div class="duration-display" id="duration-display">Enter days and hours above</div>
+    </div>
+
+    <div class="card">
+      <div class="info-row">
+        <span class="info-label">Destination</span>
+        <span class="info-value" id="dest-preview">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Arrival date</span>
+        <span class="info-value" id="date-preview">—</span>
+      </div>
+    </div>
+
+    <span class="field-error" id="err-duration">Please enter a valid duration (at least 1 hour)</span>
+
+    <button class="btn-primary" onclick="submitDuration()">Continue</button>
+    <button class="btn-secondary" onclick="window.location.href='travel.html'">← Back</button>
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    document.getElementById('dest-preview').textContent = sessionStorage.getItem('tm_location') || '—';
+    document.getElementById('date-preview').textContent = sessionStorage.getItem('tm_date') || '—';
+
+    function updateSummary() {
+      const d = parseInt(document.getElementById('days').value) || 0;
+      const h = parseInt(document.getElementById('hours').value) || 0;
+      const display = document.getElementById('duration-display');
+      if (d === 0 && h === 0) { display.textContent = 'Enter days and hours above'; return; }
+      const parts = [];
+      if (d > 0) parts.push(d + (d === 1 ? ' day' : ' days'));
+      if (h > 0) parts.push(h + (h === 1 ? ' hour' : ' hours'));
+      display.textContent = parts.join(' and ');
+    }
+
+    function submitDuration() {
+      const d = parseInt(document.getElementById('days').value) || 0;
+      const h = parseInt(document.getElementById('hours').value) || 0;
+      document.getElementById('err-duration').classList.remove('show');
+if (d === 0 && h === 0) { 
+  window.location.href = 'error2.html?type=duration';
+  return;
+}
+      sessionStorage.setItem('tm_days', d);
+      sessionStorage.setItem('tm_hours', h);
+      window.location.href = 'return.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Machine — Traveler Info</title>
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/user.css">
+</head>
+<body>
+  <div class="screen">
+    <div class="glow-orb" style="width:200px;height:200px;background:#8B5CF6;top:-40px;right:-40px;"></div>
+
+
+    <h1 class="page-title">Traveller<br>Information</h1>
+    <p class="page-subtitle">Tell us a bit about yourself before we go forward.</p>
+
+    <div class="form-group">
+      <label class="form-label" for="fullname">Full Name</label>
+      <input class="form-input" type="text" id="fullname" placeholder="e.g. Ada Lovelace" autocomplete="off">
+      <span class="field-error" id="err-name">Please enter your name</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="email">Email Address</label>
+      <input class="form-input" type="email" id="email" placeholder="ada@timemachine.io" autocomplete="off">
+      <span class="field-error" id="err-email">Please enter a valid email</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="age">Age</label>
+      <input class="form-input" type="number" id="age" placeholder="e.g. 28" min="12" max="120">
+      <span class="field-error" id="err-age">Must be between 12 and 120</span>
+    </div>
+
+    <button class="btn-primary" onclick="submitUser()">Continue</button>
+    <button class="btn-secondary" onclick="window.location.href='welcome.html'">← Back</button>
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    function submitUser() {
+      const name  = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const age   = parseInt(document.getElementById('age').value);
+      let valid   = true;
+
+      document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+
+      if (!name) { document.getElementById('err-name').classList.add('show'); valid = false; }
+      if (!email || !email.includes('@')) { document.getElementById('err-email').classList.add('show'); valid = false; }
+      if (!age || age < 12 || age > 120) { document.getElementById('err-age').classList.add('show'); valid = false; }
+
+      if (!valid) { window.location.href = 'error1.html'; return; }
+
+      sessionStorage.setItem('tm_name', name);
+      sessionStorage.setItem('tm_email', email);
+      sessionStorage.setItem('tm_age', age);
+      window.location.href = 'travel.html';
+    }
+  </script>
+</body>
+</html>

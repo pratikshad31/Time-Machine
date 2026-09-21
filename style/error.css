@@ -1,0 +1,113 @@
+/* ===== FORCE COLUMN LAYOUT (FIX MAIN ISSUE) ===== */
+.error-screen {
+  display: flex;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  text-align: center;
+}
+
+
+/* ===== ICON ===== */
+.error-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+  animation: shake 0.5s ease 0.2s;
+}
+
+
+/* ===== TITLE ===== */
+.error-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+
+/* ===== MESSAGE ===== */
+.error-message {
+  font-size: 14px;
+  color: var(--subtext);
+  line-height: 1.6;
+
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+
+
+/* ===== ERROR BOX ===== */
+.error-detail {
+  width: 100%;
+  max-width: 480px;
+
+  text-align: left;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+
+  margin-bottom: 28px;
+}
+
+
+/* ===== ITEMS ===== */
+.error-detail-item {
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.error-detail-item:last-child {
+  border-bottom: none;
+}
+
+
+/* ===== BUTTONS ===== */
+.error-screen .btn-primary,
+.error-screen .btn-secondary {
+  width: 100%;
+  max-width: 400px;
+}
+
+.error-screen .btn-primary {
+  margin-bottom: 12px;
+}
+
+
+/* ===== ANIMATION ===== */
+@keyframes shake {
+  0%,100%{ transform: translateX(0); }
+  20%{ transform: translateX(-6px); }
+  40%{ transform: translateX(6px); }
+  60%{ transform: translateX(-4px); }
+  80%{ transform: translateX(4px); }
+}
+
+
+/* ===== COLOR THEMES ===== */
+
+/* 🔴 RED (User Error) */
+.error-red .error-title { color: #EF4444; }
+.error-red .error-detail { border: 1px solid rgba(133, 34, 34, 0.2); }
+.error-red .error-detail-item { color: #FCA5A5; }
+.error-red .btn-primary { background: #EF4444; color: white; }
+
+/* 🟡 YELLOW (Journey Error) */
+.error-yellow .error-title { color: #EF4444; }
+.error-yellow .error-detail { border: 1px solid rgba(133, 34, 34, 0.2); }
+.error-yellow .error-detail-item { color: #FCA5A5; }
+.error-yellow .btn-primary { background: #EF4444; color: white; }
+

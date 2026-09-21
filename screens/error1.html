@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Machine — Error</title>
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/error.css">
+</head>
+<body>
+  <div class="screen error-screen error-red">
+
+  <div class="error-icon" style="border:1px solid rgba(239,68,68,0.3);">
+    <!-- X icon -->
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="36" stroke="#EF4444" stroke-width="2"/>
+      <line x1="28" y1="28" x2="52" y2="52" stroke="#EF4444" stroke-width="3"/>
+      <line x1="52" y1="28" x2="28" y2="52" stroke="#EF4444" stroke-width="3"/>
+    </svg>
+  </div>
+
+  <h1 class="error-title">Input Error</h1>
+
+  <div class="error-detail">
+    <div class="error-detail-item">✗ Name is required</div>
+    <div class="error-detail-item">✗ Enter a valid email</div>
+    <div class="error-detail-item">✗ Age must be between 12–120</div>
+  </div>
+
+  <button class="btn-primary" onclick="history.back()">← Go Back & Fix</button>
+  <button class="btn-secondary" onclick="window.location.href='welcome.html'">Start Over</button>
+
+</div>
+  <script src="../script.js"></script>
+</body>
+</html>

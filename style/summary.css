@@ -1,0 +1,132 @@
+/* ===== MAIN CONTAINER ===== */
+.summary-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Cards equal size */
+.summary-container .card {
+  flex: 1;
+  min-width: 260px;
+}
+
+
+/* ===== SECTION TITLE ===== */
+.summary-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+
+/* ===== ROWS ===== */
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.summary-row:last-child,
+.summary-row.last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.summary-row span:first-child {
+  color: var(--subtext);
+}
+
+.summary-row span:last-child {
+  color: var(--white);
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+
+/* ===== ACTION AREA ===== */
+.summary-actions {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Warning */
+.launch-warning {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #FCA5A5;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+/* ===== BUTTON FIX (IMPORTANT) ===== */
+.summary-actions .btn-primary,
+.summary-actions .btn-secondary {
+  width: 100%;
+  margin-top: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+/* Prevent text breaking */
+.launch-btn {
+  
+  font-size: 14px;
+
+  white-space: nowrap;   /* 🔥 FIX */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* ===== TITLE ===== */
+.page-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .summary-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .summary-container .card {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .summary-actions {
+    max-width: 100%;
+  }
+}

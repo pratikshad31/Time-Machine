@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Machine — Error</title>
+
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/error.css">
+</head>
+<body>
+
+<div class="screen error-screen error-red">
+
+  <!-- ICON -->
+  <div class="error-icon" style="border:1px solid rgba(239,68,68,0.3);">
+    <svg width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="36" stroke="#EF4444" stroke-width="2"/>
+      <line x1="28" y1="28" x2="52" y2="52" stroke="#EF4444" stroke-width="3"/>
+      <line x1="52" y1="28" x2="28" y2="52" stroke="#EF4444" stroke-width="3"/>
+    </svg>
+  </div>
+
+  <!-- TITLE -->
+  <h1 class="error-title" id="error-title">Error</h1>
+
+  <!-- DETAILS -->
+  <div class="error-detail" id="error-list">
+    <!-- JS will fill this -->
+  </div>
+
+  <!-- BUTTONS -->
+  <button class="btn-primary" onclick="history.back()">← Go Back & Fix</button>
+  <button class="btn-secondary" onclick="window.location.href='welcome.html'">Start Over</button>
+
+</div>
+
+<script src="../script.js"></script>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get('type');
+
+  const title = document.getElementById('error-title');
+  const list = document.getElementById('error-list');
+
+  function setError(t, items) {
+    title.textContent = t;
+    list.innerHTML = items.map(i => `<div class="error-detail-item">✗ ${i}</div>`).join('');
+  }
+
+  if (type === 'travel') {
+    setError('Travel Error', [
+      'Enter a valid destination',
+      'Fill day, month and year',
+      'Invalid travel date'
+    ]);
+  }
+  else if (type === 'duration') {
+    setError('Duration Error', [
+      'Duration cannot be zero',
+      'Enter days or hours',
+      'Invalid duration input'
+    ]);
+  }
+  else if (type === 'return') {
+    setError('Return Error', [
+      'Return location is required',
+      'Enter a valid return place'
+    ]);
+  }
+  else {
+    setError('Unknown Error', [
+      'Something went wrong',
+      'Please try again'
+    ]);
+  }
+</script>
+
+</body>
+</html>

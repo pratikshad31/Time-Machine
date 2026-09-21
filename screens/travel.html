@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Machine — Destination</title>
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/travel.css">
+</head>
+<body>
+  <div class="screen">
+    <div class="glow-orb" style="width:220px;height:220px;background:#00F5FF;top:-60px;left:-60px;"></div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" style="width: 40%"></div>
+    </div>
+
+    <h1 class="page-title">Destination & Time</h1>
+   
+
+    <!-- Location -->
+    <div class="form-group">
+      <label class="form-label" for="location">Location on Earth</label>
+      <input class="form-input" type="text" id="location" placeholder="e.g. Rome, Italy" autocomplete="off">
+      <span class="field-error" id="err-location">Please enter a destination</span>
+    </div>
+
+    <!-- Date -->
+    <div class="input-row">
+      <div class="form-group">
+        <label class="form-label" for="day">Day</label>
+        <input class="form-input" type="number" id="day" placeholder="DD" min="1" max="31">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="month">Month</label>
+        <select class="form-input" id="month">
+          <option value="" disabled selected>Month</option>
+          <option>January</option><option>February</option><option>March</option>
+          <option>April</option><option>May</option><option>June</option>
+          <option>July</option><option>August</option><option>September</option>
+          <option>October</option><option>November</option><option>December</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="year">Year</label>
+        <input class="form-input" type="number" id="year" placeholder="YYYY">
+      </div>
+    </div>
+    <span class="field-error" id="err-date">Please fill in the complete travel date</span>
+
+    <!-- Era badge -->
+    <div class="era-badge" id="era-badge">Enter a year to see the era</div>
+
+    <button class="btn-primary" onclick="submitTravel()">Continue</button>
+    <button class="btn-secondary" onclick="window.location.href='user.html'">← Back</button>
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+   document.getElementById('year').addEventListener('input', function () {
+  const y = parseInt(this.value);
+  const badge = document.getElementById('era-badge');
+  const currentYear = new Date().getFullYear();
+
+  // If empty or invalid input
+  if (isNaN(y)) {
+    badge.textContent = 'Enter a year to see the era';
+    badge.className = 'era-badge';
+    return;
+  }
+
+  // Era logic
+  if (y < 0) {
+    badge.textContent = 'Ancient Era — ' + Math.abs(y) + ' BC';
+    badge.className = 'era-badge past';
+  } 
+  else if (y < 500) {
+    badge.textContent = 'Classical Era';
+    badge.className = 'era-badge past';
+  } 
+  else if (y < 1500) {
+    badge.textContent = 'Medieval Era';
+    badge.className = 'era-badge past';
+  } 
+  else if (y < 1800) {
+    badge.textContent = 'Early Modern Era';
+    badge.className = 'era-badge past';
+  } 
+  else if (y <= currentYear) {
+    badge.textContent = 'Modern Era';
+    badge.className = 'era-badge past';
+  } 
+  else {
+    badge.textContent = 'Future — ' + (y - currentYear) + ' years ahead';
+    badge.className = 'era-badge future';
+  }
+});
+
+    function submitTravel() {
+      const location = document.getElementById('location').value.trim();
+      const day      = document.getElementById('day').value;
+      const month    = document.getElementById('month').value;
+      const year     = document.getElementById('year').value;
+      let valid = true;
+
+      document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+
+      if (!location) { document.getElementById('err-location').classList.add('show'); valid = false; }
+      if (!day || !month || !year) { document.getElementById('err-date').classList.add('show'); valid = false; }
+
+      if (!valid) { 
+  window.location.href = 'error2.html?type=travel';
+  return;
+}
+
+      sessionStorage.setItem('tm_location', location);
+      sessionStorage.setItem('tm_date', `${day} ${month} ${year}`);
+      window.location.href = 'duration.html';
+    }
+  </script>
+</body>
+</html>

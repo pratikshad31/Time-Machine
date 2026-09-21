@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Machine — Return Journey</title>
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/return.css">
+</head>
+<body>
+  <div class="screen">
+    <div class="glow-orb" style="width:200px;height:200px;background:#8B5CF6;bottom:120px;left:-60px;"></div>
+
+
+<h1 class="page-title">Return<br>Journey</h1>
+
+<div class="return-layout">
+
+  <!-- LEFT SIDE (Journey) -->
+  <div class="left-journey">
+    <div class="journey-visual">
+      <div class="journey-point">
+        <div class="point-dot cyan"></div>
+        <div class="point-info">
+          <span class="point-label">Departing from</span>
+          <span class="point-value" id="depart-from">Present Day</span>
+        </div>
+      </div>
+
+      <div class="journey-line"></div>
+
+      <div class="journey-point">
+        <div class="point-dot purple"></div>
+        <div class="point-info">
+          <span class="point-label">Visiting</span>
+          <span class="point-value" id="visiting-location">—</span>
+        </div>
+      </div>
+
+      <div class="journey-line"></div>
+
+      <div class="journey-point">
+        <div class="point-dot pink"></div>
+        <div class="point-info">
+          <span class="point-label">Returning to</span>
+          <span class="point-value">?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE (Form) -->
+  <div class="right-form">
+
+    <div class="form-group">
+      <label class="form-label" for="return-location">Return Location</label>
+      <input class="form-input" type="text" id="return-location" placeholder="e.g. London, UK" autocomplete="off">
+      <span class="field-error" id="err-return">Please enter your return location</span>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="return-note">Any note for your return? (optional)</label>
+      <textarea class="form-input" id="return-note" placeholder="e.g. Meet at the clock tower..." rows="3" style="height:auto;padding-top:16px;padding-bottom:16px;resize:none;"></textarea>
+    </div>
+
+    <button class="btn-primary" onclick="submitReturn()">Review Journey</button>
+    <button class="btn-secondary" onclick="window.location.href='duration.html'">← Back</button>
+
+  </div>
+
+</div>
+
+  <script src="../script.js"></script>
+  <script>
+    document.getElementById('visiting-location').textContent = sessionStorage.getItem('tm_location') || '—';
+
+    function submitReturn() {
+      const ret = document.getElementById('return-location').value.trim();
+      const note = document.getElementById('return-note').value.trim();
+      document.getElementById('err-return').classList.remove('show');
+if (!ret) { 
+  window.location.href = 'error2.html?type=return';
+  return;
+}
+      sessionStorage.setItem('tm_return', ret);
+      sessionStorage.setItem('tm_note', note);
+      window.location.href = 'summary.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+/* ===== MAIN LAYOUT ===== */
+.return-layout {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px; /* better spacing */
+}
+
+
+/* ===== LEFT SIDE (Journey) ===== */
+.left-journey {
+  flex: 0 0 28%;
+  display: flex;
+  justify-content: center;
+}
+
+.journey-visual {
+  width: 100%;
+  max-width: 260px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* ===== JOURNEY POINTS ===== */
+.journey-point {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.point-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Glow colors */
+.point-dot.cyan {
+  background: var(--cyan);
+  box-shadow: 0 0 12px rgba(0,245,255,0.6);
+}
+
+.point-dot.purple {
+  background: var(--purple);
+  box-shadow: 0 0 12px rgba(139,92,246,0.6);
+}
+
+.point-dot.pink {
+  background: var(--pink);
+  box-shadow: 0 0 12px rgba(236,72,153,0.6);
+}
+
+/* Text */
+.point-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.point-label {
+  font-size: 11px;
+  color: var(--subtext);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.point-value {
+  font-size: 15px;
+  color: var(--white);
+  font-weight: 500;
+}
+
+
+/* ===== CONNECTING LINE ===== */
+.journey-line {
+  width: 2px;
+  height: 28px;
+  background: var(--border);
+  margin-left: 6px;
+}
+
+
+/* ===== RIGHT SIDE (FORM) ===== */
+.right-form {
+  flex: 0 0 50%;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* spacing like other pages */
+.right-form .form-group {
+  width: 100%;
+  margin-bottom: 22px;
+}
+
+/* Buttons */
+.right-form .btn-primary,
+.right-form .btn-secondary {
+  width: 100%;
+}
+
+
+/* ===== TITLE ===== */
+
+.page-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+/* ===== RESPONSIVE (VERY IMPORTANT) ===== */
+@media (max-width: 768px) {
+  .return-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .left-journey,
+  .right-form {
+    flex: 100%;
+    max-width: 500px;
+  }
+
+  .journey-visual {
+    align-items: center;
+  }
+}
